@@ -34,7 +34,7 @@
             </md-app-drawer>-->
 
             <md-app-content>
-                <Hours
+                <Place
                         v-for="place in places"
                         v-bind:key="place.id"
                         v-bind:libraryName="place.name"
@@ -51,13 +51,13 @@
     import 'vue-material/dist/theme/default-dark.css';
     import {Component, Vue} from 'vue-property-decorator';
 
-    import Hours from './components/Hours.vue';
+    import Place from './components/Place.vue';
 
     Vue.use(VueMaterial as any);
 
     @Component({
         components: {
-            Hours,
+            Place,
         },
     })
     export default class App extends Vue {

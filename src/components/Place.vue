@@ -8,7 +8,7 @@
 
                 <md-card-area md-inset>
                     <md-card-header>
-                        <h2 class="md-title">{{libraryName}} Hours</h2>
+                        <h2 class="md-title">Hours of {{libraryName}}</h2>
                         <div class="md-subhead">
                             <md-icon>location_on</md-icon>
                             <span>HKU</span>
@@ -49,7 +49,7 @@
     }
 
     @Component
-    export default class Hours extends Vue {
+    export default class Place extends Vue {
         @Prop() private banner!: BannerProps;
         @Prop() private libraryName!: string;
     }
