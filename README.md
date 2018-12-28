@@ -1,4 +1,34 @@
-# hey-hkul-hours
-[![CircleCI](https://circleci.com/gh/htbkoo/hey-hkul-hours.svg?style=shield)](https://circleci.com/gh/htbkoo/hey-hkul-hours)
+# hey-hkul-hours-web-vue
 
-An app to quickly retrieve the opening hours and calendar for HKU Library
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Run your tests
+```
+npm run test
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Run your unit tests
+```
+npm run test:unit
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
