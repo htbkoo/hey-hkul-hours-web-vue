@@ -96,4 +96,8 @@
         margin-left: auto;
         margin-right: auto;
     }
+
+    .card-reservation {
+        display: flex;
+    }
 </style>
