@@ -8,7 +8,9 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "gh-pages:rename": "node -e require('fs').renameSync('dist','docs')"
+    "gh-pages:clean": "rimraf docs",
+    "gh-pages:rename": "node -e require('fs').renameSync('dist','docs')",
+    "gh-pages:build": "npm run gh-pages:clean && npm run build && npm run gh-pages:rename"
   },
   "repository": {
     "type": "git",
