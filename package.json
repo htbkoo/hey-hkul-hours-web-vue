@@ -1,6 +1,6 @@
 {
-  "name": "hey-hkul-hours-web",
-  "version": "0.1.0",
+  "name": "hey-hkul-hours-web-vue",
+  "version": "0.2.0",
   "private": true,
   "description": "Web client for hey-hkul-hours, an app to quickly retrieve the opening hours and calendar for HKU Library",
   "scripts": {
