@@ -8,10 +8,10 @@
 
                 <md-card-area md-inset>
                     <md-card-header>
-                        <h2 class="md-title">Hours of {{placeMeta.name}}</h2>
+                        <h2 class="md-title">Hours of {{meta.name}}</h2>
                         <div class="md-subhead">
                             <md-icon>location_on</md-icon>
-                            <span>{{placeMeta.location}}</span>
+                            <span>{{meta.location}}</span>
                         </div>
                     </md-card-header>
 
@@ -21,17 +21,12 @@
                 </md-card-area>
             </md-card-media-cover>
 
-            <md-card-content>
-                <h3 class="md-subheading">{{placeMeta.name}}</h3>
-                <div class="card-reservation">
-                    <md-icon>access_time</md-icon>
-                    <div class="md-button-group">
-                        <md-button>5:30PM</md-button>
-                        <md-button>7:30PM</md-button>
-                        <md-button>9:00PM</md-button>
-                    </div>
-                </div>
-            </md-card-content>
+            <Library
+                    v-for="(library, index) in libraries"
+                    :key="index"
+                    :name="library.name"
+                    :hours="library.hours"
+            />
 
             <!--<md-card-actions>-->
             <!--<md-button class="md-primary">Reserve</md-button>-->
@@ -43,6 +38,9 @@
 <script lang="ts">
     import {Component, Prop, Vue} from 'vue-property-decorator';
 
+    import Library from "@/components/Library.vue";
+    import Hours from "hey-hkul-hours/dist/service/hour/model/Hours";
+
     type BannerProps = {
         src: string,
         alt: string
@@ -53,10 +51,20 @@
         location: string
     }
 
-    @Component
+    type LibraryProps = {
+        name: string,
+        hours: Hours
+    }
+
+    @Component({
+        components: {
+            Library,
+        },
+    })
     export default class Place extends Vue {
         @Prop() private banner!: BannerProps;
-        @Prop() private placeMeta!: PlaceMetaProps;
+        @Prop() private meta!: PlaceMetaProps;
+        @Prop() private libraries!: LibraryProps[];
     }
 </script>
 
@@ -102,7 +110,11 @@
         margin-right: auto;
     }
 
-    .card-reservation {
+    .session-group {
         display: flex;
+    }
+
+    .session-from-to {
+        flex: 1;
     }
 </style>

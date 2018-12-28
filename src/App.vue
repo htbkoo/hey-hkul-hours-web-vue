@@ -37,8 +37,9 @@
                 <Place
                         v-for="place in places"
                         v-bind:key="place.id"
-                        v-bind:placeMeta="place.placeMeta"
+                        v-bind:meta="place.meta"
                         v-bind:banner="place.banner"
+                        v-bind:libraries="place.libraries"
                 />
             </md-app-content>
         </md-app>
@@ -64,8 +65,9 @@
         places = [
             {
                 id: 1,
-                placeMeta: {name: "HKU Library", location: "Pok Fu Lam"},
-                banner: {src: "hkul/wikipedia/hkul_banner.jpg", alt: "HKU Main Library"}
+                meta: {name: "HKU Library", location: "Pok Fu Lam"},
+                banner: {src: "hkul/wikipedia/hkul_banner.jpg", alt: "HKU Main Library"},
+                libraries: []
             }
             // https://upload.wikimedia.org/wikipedia/commons/e/ed/HKU_%E9%A6%99%E6%B8%AF%E5%A4%A7%E5%AD%B8_Sun_Yat-sen_Place_%E4%B8%AD%E5%B1%B1%E5%BB%A3%E5%A0%B4_Main_Library_facade_March-2012_Ip4.jpg
         ]
