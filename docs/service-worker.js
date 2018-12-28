@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.eab9fbb3950aab15ef030486295e9abb.js"
+  "/hey-hkul-hours-web-vue/precache-manifest.15adc7ed9e582e8cc47584ac1ec5f9b9.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "hey-hkul-hours-web"});
