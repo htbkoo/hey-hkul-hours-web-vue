@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/hey-hkul-hours.iml" filepath="$PROJECT_DIR$/.idea/hey-hkul-hours.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/hey-hkul-hours-web-vue.iml" filepath="$PROJECT_DIR$/.idea/hey-hkul-hours-web-vue.iml" />
     </modules>
   </component>
 </project>
