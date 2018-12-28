@@ -8,10 +8,10 @@
 
                 <md-card-area md-inset>
                     <md-card-header>
-                        <h2 class="md-title">Hours of {{libraryName}}</h2>
+                        <h2 class="md-title">Hours of {{placeMeta.name}}</h2>
                         <div class="md-subhead">
                             <md-icon>location_on</md-icon>
-                            <span>HKU</span>
+                            <span>{{placeMeta.location}}</span>
                         </div>
                     </md-card-header>
 
@@ -22,7 +22,7 @@
             </md-card-media-cover>
 
             <md-card-content>
-                <h3 class="md-subheading">{{libraryName}}</h3>
+                <h3 class="md-subheading">{{placeMeta.name}}</h3>
                 <div class="card-reservation">
                     <md-icon>access_time</md-icon>
                     <div class="md-button-group">
@@ -48,10 +48,15 @@
         alt: string
     }
 
+    type PlaceMetaProps = {
+        name: string,
+        location: string
+    }
+
     @Component
     export default class Place extends Vue {
         @Prop() private banner!: BannerProps;
-        @Prop() private libraryName!: string;
+        @Prop() private placeMeta!: PlaceMetaProps;
     }
 </script>
 
