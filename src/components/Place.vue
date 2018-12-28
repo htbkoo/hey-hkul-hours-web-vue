@@ -1,5 +1,5 @@
 <template>
-    <div class="hours-container">
+    <div class="place-container">
         <md-card class="md-card-example">
             <md-card-media-cover md-text-scrim>
                 <md-card-media>
