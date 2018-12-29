@@ -57,10 +57,11 @@
     import moment from "moment";
     import mockHtmlFetcher from "@/services/mockHtmlFetcher";
     import librariesDataPopulator from "@/services/librariesDataPopulator";
+    import {LibraryProps} from "@/types/LibraryProps";
 
     Vue.use(VueMaterial as any);
 
-    const libraries = [];
+    const libraries: LibraryProps[] = [];
 
     librariesDataPopulator.populateData(
         libraries,
