@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/hey-hkul-hours-web-vue/precache-manifest.15adc7ed9e582e8cc47584ac1ec5f9b9.js"
+  "/hey-hkul-hours-web-vue/precache-manifest.8b2336a6282c5d4a3097bd25f4222efa.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "hey-hkul-hours-web"});
+workbox.core.setCacheNameDetails({prefix: "hey-hkul-hours-web-vue"});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
