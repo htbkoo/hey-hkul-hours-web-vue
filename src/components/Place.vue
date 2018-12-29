@@ -40,18 +40,19 @@
 
     import Library from "@/components/Library.vue";
     import Hours from "hey-hkul-hours/dist/service/hour/model/Hours";
+    // import {LibraryProps} from "@/types/LibraryProps";
 
-    type BannerProps = {
+    export type BannerProps = {
         src: string,
         alt: string
     }
 
-    type PlaceMetaProps = {
+    export type PlaceMetaProps = {
         name: string,
         location: string
     }
 
-    type LibraryProps = {
+    export type LibraryProps = {
         name: string,
         hours: Hours
     }
