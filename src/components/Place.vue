@@ -90,15 +90,6 @@
         color: #42b983;
     }
 
-    .md-app {
-        border: 1px solid rgba(0, 0, 0, .12);
-    }
-
-    .md-drawer {
-        width: 230px;
-        max-width: calc(100vw - 125px);
-    }
-
     .md-card {
         max-width: 640px;
         /*margin: 4px;*/
