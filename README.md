@@ -1,7 +1,7 @@
 # hey-hkul-hours-web-vue
-The web client to utilize `hey-hkul-hours` to quickly retrieve the opening hours using `vue-js`
+> The web client to utilize `hey-hkul-hours` to quickly retrieve the opening hours using `vue-js`
 
-An instance hosted on GitHub pages: https://htbkoo.github.io/hey-hkul-hours-web-vue/
+(Currently using fake data due to CORS) An instance hosted on GitHub pages: https://htbkoo.github.io/hey-hkul-hours-web-vue/
 
 ## Project setup
 ```

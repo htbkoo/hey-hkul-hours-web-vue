@@ -53,20 +53,17 @@
     import {Component, Vue} from 'vue-property-decorator';
 
     import Place from './components/Place.vue';
-    import {HkuLibraryHoursFetcher} from "hey-hkul-hours";
-    import moment from "moment";
-    import mockHtmlFetcher from "@/services/mockHtmlFetcher";
-    import librariesDataPopulator from "@/services/librariesDataPopulator";
+    import hkulDataPopulator from "@/services/hkulDataPopulator";
     import {LibraryProps} from "@/types/LibraryProps";
 
     Vue.use(VueMaterial as any);
 
     const libraries: LibraryProps[] = [];
 
-    librariesDataPopulator.populateData(
-        libraries,
-        new HkuLibraryHoursFetcher({htmlFetcher: mockHtmlFetcher}).retrieveHours(moment())
-    );
+    hkulDataPopulator.populateData()
+        .then(data => data.forEach(
+            libraryProps => libraries.push(libraryProps)
+        ));
 
     @Component({
         components: {

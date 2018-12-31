@@ -3,7 +3,7 @@
         <md-icon>access_time</md-icon>
         <div class="session-from-to">
             <md-button>{{formattedSession.from}}</md-button>
-            <md-button>-</md-button>
+            <md-button disabled>-</md-button>
             <md-button>{{formattedSession.to}}</md-button>
         </div>
     </div>
@@ -12,6 +12,8 @@
 <script lang="ts">
     import {Component, Prop, Vue} from 'vue-property-decorator';
     import Hour from "hey-hkul-hours/dist/service/hour/model/Hour";
+
+    const TIME_FORMAT = "HH:mm";
 
     type FormattedHour = {
         from: string,
@@ -23,10 +25,22 @@
         @Prop() private session!: Hour;
 
         get formattedSession(): FormattedHour {
+            const from = this.session.getFrom().format(TIME_FORMAT);
             return {
-                from: this.session.getFrom().format(),
-                to: this.session.getTo().format(),
+                from,
+                to: formatEndTime(this.session),
             };
+
+            function formatEndTime(session): string {
+                const to = session.getTo();
+                const isFollowingDay = to.isAfter(session.getFrom(), "day");
+                const formattedTime = to.format(TIME_FORMAT);
+                if (isFollowingDay) {
+                    return `${formattedTime} (+1)`
+                } else {
+                    return formattedTime;
+                }
+            }
         }
     }
 </script>
