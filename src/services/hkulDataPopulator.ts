@@ -6,7 +6,19 @@ import {HkuLibraryHoursFetcher} from "hey-hkul-hours";
 import mockHtmlFetcher from "@/services/mockHtmlFetcher";
 
 const useMockFetcher = false;
-const overrides = useMockFetcher ? {htmlFetcher: mockHtmlFetcher} : {};
+
+const noCorsHtmlFetcher = {
+    fetchHtml(url: string) {
+        console.log(`fetching with noCorsHtmlFetcher`);
+        return fetch(url, {mode: "no-cors"}).then(response => {
+            const responseAsText = response.text();
+            console.log(`get response: ${responseAsText}`);
+            return responseAsText;
+        });
+    }
+};
+
+const overrides = useMockFetcher ? {htmlFetcher: mockHtmlFetcher} : {htmlFetcher: noCorsHtmlFetcher};
 const hkuLibraryHoursFetcher = new HkuLibraryHoursFetcher(overrides);
 
 export default {
