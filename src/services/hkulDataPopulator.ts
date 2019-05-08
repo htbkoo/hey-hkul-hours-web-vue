@@ -5,9 +5,13 @@ import {LibraryProps} from "@/types/LibraryProps";
 import {HkuLibraryHoursFetcher} from "hey-hkul-hours";
 import mockHtmlFetcher from "@/services/mockHtmlFetcher";
 
+const useMockFetcher = false;
+const overrides = useMockFetcher ? {htmlFetcher: mockHtmlFetcher} : {};
+const hkuLibraryHoursFetcher = new HkuLibraryHoursFetcher(overrides);
+
 export default {
     populateData() {
-        return new HkuLibraryHoursFetcher({htmlFetcher: mockHtmlFetcher}).retrieveHours(moment())
+        return hkuLibraryHoursFetcher.retrieveHours(moment())
             .then(libraryHours => {
                     const hoursForAllZones = libraryHours.getHoursForAllZones();
                     const allZones = Object.keys(hoursForAllZones);
