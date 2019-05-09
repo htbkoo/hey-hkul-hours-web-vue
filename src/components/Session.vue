@@ -31,7 +31,7 @@
                 to: formatEndTime(this.session),
             };
 
-            function formatEndTime(session): string {
+            function formatEndTime(session: Hour): string {
                 const to = session.getTo();
                 const isFollowingDay = to.isAfter(session.getFrom(), "day");
                 const formattedTime = to.format(TIME_FORMAT);

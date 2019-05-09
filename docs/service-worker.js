@@ -1,29 +1,30 @@
-/**
- * Welcome to your Workbox-powered service worker!
- *
- * You'll need to register this file in your web app and you should
- * disable HTTP caching for this file too.
- * See https://goo.gl/nhQhGp
- *
- * The rest of the code is auto-generated. Please don't update this file
- * directly; instead, make changes to your Workbox build configuration
- * and re-run your build process.
- * See https://goo.gl/2aRDsh
- */
+importScripts("/hey-hkul-hours-web-vue/precache-manifest.d0e540d2cad53cb4ca6738795840fe27.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
-
-importScripts(
-  "/hey-hkul-hours-web-vue/precache-manifest.8b2336a6282c5d4a3097bd25f4222efa.js"
-);
-
-workbox.core.setCacheNameDetails({prefix: "hey-hkul-hours-web-vue"});
-
-/**
- * The workboxSW.precacheAndRoute() method efficiently caches and responds to
- * requests for URLs in the manifest.
- * See https://goo.gl/S9QRab
- */
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.suppressWarnings();
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+"use strict";
+console.log("@service-worker.js");
+const URL_PATTERN = /https:\/\/lib\.hku\.hk\/hours/;
+const handlerCb = ({ url, event, params }) => {
+    return fetch(event.request)
+        .then((response) => {
+        console.log(`got response`);
+        return response.text();
+    })
+        .then((responseBody) => {
+        //return new Response(`${responseBody} <!-- Look Ma. Added Content. -->`);
+        console.log(`parsed and get body: ${responseBody}`);
+        return new Response(responseBody);
+    });
+};
+// @ts-ignore
+if (workbox) {
+    console.log(`Workbox is loaded`);
+    // @ts-ignore
+    workbox.precaching.precacheAndRoute(self.__precacheManifest);
+    console.log(`registering for url pattern: ${URL_PATTERN.toString()}`);
+    // @ts-ignore
+    workbox.routing.registerRoute(URL_PATTERN, handlerCb);
+}
+else {
+    console.log(`Workbox didn't load`);
+}
+//# sourceMappingURL=service-worker.js.map
