@@ -17,7 +17,7 @@
 
                     <md-card-content>
                         <div>
-                            <md-datepicker v-model="state.selectedDate" md-immediately />
+                            <md-datepicker v-model="state.selectedDate" md-immediately/>
                         </div>
                         <div>
                             Libraries opening hours are as follow:
@@ -45,11 +45,10 @@
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from 'vue-property-decorator';
+    import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
     import moment from "moment";
 
     import Library from "@/components/Library.vue";
-    import Hours from "hey-hkul-hours/dist/service/hour/model/Hours";
     import {LibraryProps} from "@/types/LibraryProps";
     import hkulDataPopulator from "@/services/hkulDataPopulator";
 
@@ -75,7 +74,11 @@
         // @Prop() private status!: { isLoading: boolean };
         // @Prop() private selectedDate!: Date;
 
-        state = {
+        state: {
+            libraries: LibraryProps[],
+            isLoading: boolean,
+            selectedDate: Date
+        } = {
             libraries: [],
             isLoading: true,
             selectedDate: moment().toDate()
@@ -83,14 +86,21 @@
 
         mounted() {
             console.log("Mounted <App/>");
-            this.populateData(this.state);
+            this.populateData();
         }
 
-        private populateData(place) {
-            console.log(`Populating data for "${this.meta.name}"`);
-            hkulDataPopulator.populateData(moment(place.selectedDate))
-                .then(data => data.forEach(libraryProps => place.libraries.push(libraryProps)))
-                .then(() => place.isLoading = false);
+        @Watch("state.selectedDate")
+        onSelectedDateChange() {
+            this.populateData();
+        }
+
+        populateData() {
+            console.log(`Populating data for "${this.meta.name}" on "${moment(this.state.selectedDate).format("YYYY-MMM-DD")}"`);
+            this.state.isLoading = true;
+            const date = moment(this.state.selectedDate);
+            hkulDataPopulator.populateData(date)
+                .then(data => this.state.libraries = data)
+                .then(() => this.state.isLoading = false);
         }
 
 
@@ -138,7 +148,7 @@
         flex: 1;
     }
 
-    .loading-spinner-container{
+    .loading-spinner-container {
         justify-content: center;
         display: flex;
     }
