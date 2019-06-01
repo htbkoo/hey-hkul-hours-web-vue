@@ -40,6 +40,7 @@
                         v-bind:meta="place.meta"
                         v-bind:banner="place.banner"
                         v-bind:libraries="place.libraries"
+                        v-bind:status="place.status"
                 />
             </md-app-content>
         </md-app>
@@ -59,11 +60,15 @@
     Vue.use(VueMaterial as any);
 
     const libraries: LibraryProps[] = [];
+    const status = {
+        isLoading: true
+    };
 
     hkulDataPopulator.populateData()
         .then(data => data.forEach(
             libraryProps => libraries.push(libraryProps)
-        ));
+        ))
+        .then(() => status.isLoading = false);
 
     @Component({
         components: {
@@ -76,7 +81,8 @@
                 id: 1,
                 meta: {name: "HKU Library", location: "Pok Fu Lam"},
                 banner: {src: "hkul/wikipedia/hkul_banner.jpg", alt: "HKU Main Library"},
-                libraries
+                libraries,
+                status
             }
         ]
     }

@@ -21,7 +21,11 @@
                 </md-card-area>
             </md-card-media-cover>
 
+            <div v-if="status.isLoading" class="loading-spinner-container">
+                <md-progress-spinner md-mode="indeterminate"/>
+            </div>
             <Library
+                    v-else
                     v-for="(library, index) in libraries"
                     :key="index"
                     :name="library.name"
@@ -61,6 +65,7 @@
         @Prop() private banner!: BannerProps;
         @Prop() private meta!: PlaceMetaProps;
         @Prop() private libraries!: LibraryProps[];
+        @Prop() private status!: { isLoading: boolean };
     }
 </script>
 
@@ -103,5 +108,10 @@
 
     .session-from-to {
         flex: 1;
+    }
+
+    .loading-spinner-container{
+        justify-content: center;
+        display: flex;
     }
 </style>
