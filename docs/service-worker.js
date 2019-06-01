@@ -1,4 +1,4 @@
-importScripts("/hey-hkul-hours-web-vue/precache-manifest.d0e540d2cad53cb4ca6738795840fe27.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
+importScripts("/hey-hkul-hours-web-vue/precache-manifest.a922a7c092486cd845127f8d4beb5c03.js", "https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 "use strict";
 console.log("@service-worker.js");
