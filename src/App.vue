@@ -41,6 +41,7 @@
                         v-bind:banner="place.banner"
                         v-bind:libraries="place.libraries"
                         v-bind:status="place.status"
+                        v-bind:selectedDate="place.selectedDate"
                 />
             </md-app-content>
         </md-app>
@@ -52,23 +53,13 @@
     import 'vue-material/dist/vue-material.min.css';
     import 'vue-material/dist/theme/default-dark.css';
     import {Component, Vue} from 'vue-property-decorator';
+    import moment from "moment";
 
     import Place from './components/Place.vue';
     import hkulDataPopulator from "@/services/hkulDataPopulator";
     import {LibraryProps} from "@/types/LibraryProps";
 
     Vue.use(VueMaterial as any);
-
-    const libraries: LibraryProps[] = [];
-    const status = {
-        isLoading: true
-    };
-
-    hkulDataPopulator.populateData()
-        .then(data => data.forEach(
-            libraryProps => libraries.push(libraryProps)
-        ))
-        .then(() => status.isLoading = false);
 
     @Component({
         components: {
@@ -81,10 +72,23 @@
                 id: 1,
                 meta: {name: "HKU Library", location: "Pok Fu Lam"},
                 banner: {src: "hkul/wikipedia/hkul_banner.jpg", alt: "HKU Main Library"},
-                libraries,
-                status
+                libraries: [],
+                status: {isLoading: true},
+                selectedDate: moment().toDate()
             }
-        ]
+        ];
+
+        mounted() {
+            console.log("Mounted <App/>");
+            this.places.forEach(this.populateData)
+        }
+
+        private populateData(place) {
+            console.log(`Populating data for "${place.meta.name}"`);
+            hkulDataPopulator.populateData(moment(place.selectedDate))
+                .then(data => data.forEach(libraryProps => place.libraries.push(libraryProps)))
+                .then(() => place.status.isLoading = false);
+        }
     }
 </script>
 
