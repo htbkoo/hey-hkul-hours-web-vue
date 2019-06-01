@@ -1,25 +1,18 @@
 import moment from "moment";
 
 import {AllZonesHours} from "hey-hkul-hours/dist/service/hour/model/LibraryHours";
-import {LibraryProps} from "@/types/LibraryProps";
+import UrlAppender from "hey-hkul-hours/dist/service/UrlAppender";
 import {HkuLibraryHoursFetcher} from "hey-hkul-hours";
+import {LibraryProps} from "@/types/LibraryProps";
 import mockHtmlFetcher from "@/services/mockHtmlFetcher";
 
 const useMockFetcher = false;
 
-const noCorsHtmlFetcher = {
-    fetchHtml(url: string) {
-        console.log(`fetching with noCorsHtmlFetcher`);
-        return fetch(url, {mode: "no-cors"}).then(response => {
-            const responseAsText = response.text();
-            console.log(`get response: ${responseAsText}`);
-            return responseAsText;
-        });
-    }
-};
-
-const overrides = useMockFetcher ? {htmlFetcher: mockHtmlFetcher} : {htmlFetcher: noCorsHtmlFetcher};
-const hkuLibraryHoursFetcher = new HkuLibraryHoursFetcher(overrides);
+const overrides = useMockFetcher ? {htmlFetcher: mockHtmlFetcher} : {};
+const hkuLibraryHoursFetcher = new HkuLibraryHoursFetcher({
+    ...overrides,
+    urlAppender: new UrlAppender("https://cors-anywhere.herokuapp.com/https://lib.hku.hk/hours/daily/opening_hours_", ".html"),
+});
 
 export default {
     populateData() {
