@@ -12,15 +12,15 @@ self.__precacheManifest = [
     "url": "/hey-hkul-hours-web-vue/robots.txt"
   },
   {
-    "revision": "e8c3518b81b028fc6460",
-    "url": "/hey-hkul-hours-web-vue/js/chunk-vendors.884e5037.js"
+    "revision": "3e85bce72f08612b6e59",
+    "url": "/hey-hkul-hours-web-vue/js/chunk-vendors.5b4a5558.js"
   },
   {
-    "revision": "1caa6a116e0431a3e3b5",
-    "url": "/hey-hkul-hours-web-vue/js/app.29758c88.js"
+    "revision": "a5e9c0d4e0fd8a6c3bd2",
+    "url": "/hey-hkul-hours-web-vue/js/app.f9041edb.js"
   },
   {
-    "revision": "c721b38f256d7950cbbd26276429b29d",
+    "revision": "5a3a01bfe3354baa333a2a2ef43611c3",
     "url": "/hey-hkul-hours-web-vue/index.html"
   },
   {
@@ -32,11 +32,11 @@ self.__precacheManifest = [
     "url": "/hey-hkul-hours-web-vue/img/hkul_banner.472c6ad1.jpg"
   },
   {
-    "revision": "e8c3518b81b028fc6460",
+    "revision": "3e85bce72f08612b6e59",
     "url": "/hey-hkul-hours-web-vue/css/chunk-vendors.0f18a044.css"
   },
   {
-    "revision": "1caa6a116e0431a3e3b5",
-    "url": "/hey-hkul-hours-web-vue/css/app.92ae0916.css"
+    "revision": "a5e9c0d4e0fd8a6c3bd2",
+    "url": "/hey-hkul-hours-web-vue/css/app.6d0b9c38.css"
   }
 ];
