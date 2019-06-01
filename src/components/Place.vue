@@ -16,13 +16,22 @@
                     </md-card-header>
 
                     <md-card-content>
-                        Libraries opening hours are as follow:
+                        <div>
+                            <md-datepicker v-model="state.selectedDate" md-immediately/>
+                        </div>
+                        <div>
+                            Libraries opening hours are as follow:
+                        </div>
                     </md-card-content>
                 </md-card-area>
             </md-card-media-cover>
 
+            <div v-if="state.isLoading" class="loading-spinner-container">
+                <md-progress-spinner md-mode="indeterminate"/>
+            </div>
             <Library
-                    v-for="(library, index) in libraries"
+                    v-else
+                    v-for="(library, index) in state.libraries"
                     :key="index"
                     :name="library.name"
                     :hours="library.hours"
@@ -36,11 +45,12 @@
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from 'vue-property-decorator';
+    import {Component, Prop, Vue, Watch} from 'vue-property-decorator';
+    import moment from "moment";
 
     import Library from "@/components/Library.vue";
-    import Hours from "hey-hkul-hours/dist/service/hour/model/Hours";
     import {LibraryProps} from "@/types/LibraryProps";
+    import hkulDataPopulator from "@/services/hkulDataPopulator";
 
     export type BannerProps = {
         src: string,
@@ -60,7 +70,40 @@
     export default class Place extends Vue {
         @Prop() private banner!: BannerProps;
         @Prop() private meta!: PlaceMetaProps;
-        @Prop() private libraries!: LibraryProps[];
+        // @Prop() private libraries!: LibraryProps[];
+        // @Prop() private status!: { isLoading: boolean };
+        // @Prop() private selectedDate!: Date;
+
+        state: {
+            libraries: LibraryProps[],
+            isLoading: boolean,
+            selectedDate: Date
+        } = {
+            libraries: [],
+            isLoading: true,
+            selectedDate: moment().toDate()
+        };
+
+        mounted() {
+            console.log("Mounted <App/>");
+            this.populateData();
+        }
+
+        @Watch("state.selectedDate")
+        onSelectedDateChange() {
+            this.populateData();
+        }
+
+        populateData() {
+            console.log(`Populating data for "${this.meta.name}" on "${moment(this.state.selectedDate).format("YYYY-MMM-DD")}"`);
+            this.state.isLoading = true;
+            const date = moment(this.state.selectedDate);
+            hkulDataPopulator.populateData(date)
+                .then(data => this.state.libraries = data)
+                .then(() => this.state.isLoading = false);
+        }
+
+
     }
 </script>
 
@@ -103,5 +146,10 @@
 
     .session-from-to {
         flex: 1;
+    }
+
+    .loading-spinner-container {
+        justify-content: center;
+        display: flex;
     }
 </style>

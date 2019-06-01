@@ -15,8 +15,8 @@ const hkuLibraryHoursFetcher = new HkuLibraryHoursFetcher({
 });
 
 export default {
-    populateData() {
-        return hkuLibraryHoursFetcher.retrieveHours(moment())
+    populateData(date = moment()) {
+        return hkuLibraryHoursFetcher.retrieveHours(date)
             .then(libraryHours => {
                     const hoursForAllZones = libraryHours.getHoursForAllZones();
                     const allZones = Object.keys(hoursForAllZones);
