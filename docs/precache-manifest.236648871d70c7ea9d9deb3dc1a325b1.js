@@ -16,11 +16,11 @@ self.__precacheManifest = [
     "url": "/hey-hkul-hours-web-vue/js/chunk-vendors.5b4a5558.js"
   },
   {
-    "revision": "a5e9c0d4e0fd8a6c3bd2",
-    "url": "/hey-hkul-hours-web-vue/js/app.f9041edb.js"
+    "revision": "c42aaa5333e14a1a89fc",
+    "url": "/hey-hkul-hours-web-vue/js/app.bd2f3e4e.js"
   },
   {
-    "revision": "5a3a01bfe3354baa333a2a2ef43611c3",
+    "revision": "bca046133c1072ccfc3e58d490ff56f4",
     "url": "/hey-hkul-hours-web-vue/index.html"
   },
   {
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/hey-hkul-hours-web-vue/css/chunk-vendors.0f18a044.css"
   },
   {
-    "revision": "a5e9c0d4e0fd8a6c3bd2",
+    "revision": "c42aaa5333e14a1a89fc",
     "url": "/hey-hkul-hours-web-vue/css/app.6d0b9c38.css"
   }
 ];
